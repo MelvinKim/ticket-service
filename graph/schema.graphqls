@@ -1,0 +1,34 @@
+
+""" 
+GraphQl schema defines the data requirements that clients can request from the GraphQL API
+"""
+
+type Ticket {
+  id: ID!
+  type: String!
+  status: Boolean!
+  createdAt: String!
+  user: User!
+}
+
+"""
+User is a type of person that uses our app
+"""
+type User {
+  id: ID!
+  username: String!
+  email: String!
+}
+
+type Query {
+  tickets: [Ticket!]!
+}
+
+input NewTicket {
+  type: String!
+  status: Boolean!
+}
+
+type Mutation {
+  createTicket(input: NewTicket!): Ticket!
+}
